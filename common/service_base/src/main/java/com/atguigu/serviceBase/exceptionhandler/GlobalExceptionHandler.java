@@ -27,9 +27,9 @@ public class GlobalExceptionHandler {
     }
 
     //自定义异常
-    @ExceptionHandler(com.atguigu.servicebase.exceptionhandler.GuliException.class)
+    @ExceptionHandler(com.atguigu.serviceBase.exceptionhandler.GuliException.class)
     @ResponseBody //为了返回数据
-    public R error(com.atguigu.servicebase.exceptionhandler.GuliException e) {
+    public R error(com.atguigu.serviceBase.exceptionhandler.GuliException e) {
         log.error(e.getMessage());
         e.printStackTrace();
 

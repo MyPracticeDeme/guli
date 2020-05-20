@@ -21,7 +21,7 @@ public class SubjectExcelListener extends AnalysisEventListener<SubjectData> {
     @Override
     public void invoke(SubjectData subjectData, AnalysisContext analysisContext) {
         if (subjectData == null) {
-            throw new com.atguigu.servicebase.exceptionhandler.GuliException(20001,"文件数据为空");
+            throw new com.atguigu.serviceBase.exceptionhandler.GuliException(20001,"文件数据为空");
         }
         EduSubject existOneSubject = this.existOneSubject(subjectService, subjectData.getOneSubjectName());
         if (existOneSubject == null) {

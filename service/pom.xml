@@ -14,8 +14,6 @@
     <modules>
         <module>service_edu</module>
         <module>service_vod</module>
-        <module>service_oss</module>
-        <module>service_oss</module>
         <module>service_oss1</module>
     </modules>
 
