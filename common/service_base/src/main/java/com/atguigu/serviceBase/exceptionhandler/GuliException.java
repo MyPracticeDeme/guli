@@ -1,4 +1,4 @@
-package com.atguigu.servicebase.exceptionhandler;
+package com.atguigu.serviceBase.exceptionhandler;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
