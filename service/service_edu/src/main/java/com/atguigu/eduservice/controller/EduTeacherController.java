@@ -22,8 +22,8 @@ import java.util.List;
  * 讲师 前端控制器
  * </p>
  *
- * @author testjava
- * @since 2020-02-24
+ * @author szy
+ * @since 2020-05-20
  */
 @Api(description="讲师管理")
 @RestController
@@ -67,15 +67,6 @@ public class EduTeacherController {
                              @PathVariable long limit) {
         //创建page对象
         Page<EduTeacher> pageTeacher = new Page<>(current,limit);
-
-        try {
-            int i = 10/0;
-        }catch(Exception e) {
-            //执行自定义异常
-            throw new GuliException(20001,"执行了自定义异常处理....");
-        }
-
-
         //调用方法实现分页
         //调用方法时候，底层封装，把分页所有数据封装到pageTeacher对象里面
         teacherService.page(pageTeacher,null);
