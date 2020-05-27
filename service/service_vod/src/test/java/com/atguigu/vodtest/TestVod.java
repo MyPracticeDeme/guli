@@ -35,7 +35,6 @@ public class TestVod {
 
             UploadVideoImpl uploader = new UploadVideoImpl();
             UploadVideoResponse response = uploader.uploadVideo(request);
-            System.out.print("RequestId=" + response.getRequestId() + "\n");  //请求视频点播服务的请求ID
             if (response.isSuccess()) {
                 System.out.print("VideoId=" + response.getVideoId() + "\n");
             } else {
