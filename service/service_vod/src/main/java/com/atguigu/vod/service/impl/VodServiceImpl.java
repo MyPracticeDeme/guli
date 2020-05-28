@@ -3,12 +3,20 @@ package com.atguigu.vod.service.impl;
 import com.aliyun.vod.upload.impl.UploadVideoImpl;
 import com.aliyun.vod.upload.req.UploadStreamRequest;
 import com.aliyun.vod.upload.resp.UploadStreamResponse;
+import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.vod.model.v20170321.DeleteVideoRequest;
+import com.atguigu.common.utils.R;
+import com.atguigu.serviceBase.exceptionhandler.GuliException;
 import com.atguigu.vod.service.VodService;
 import com.atguigu.vod.utils.ConstantVodUtils;
+import com.atguigu.vod.utils.InitVodClient;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class VodServiceImpl implements VodService {
@@ -39,5 +47,36 @@ public class VodServiceImpl implements VodService {
             return null;
         }
 
+    }
+
+    //删除多个阿里云视频的方法
+    @Override
+    public void removeMoreAliyunVideo(List videoIdList) {
+        try {
+            //初始化对象
+            DefaultAcsClient client = InitVodClient.initVodClient(ConstantVodUtils.ACCESS_KEY_ID, ConstantVodUtils.ACCESS_KEY_SECRET);
+            //创建一个删除视频的request对象
+            DeleteVideoRequest request = new DeleteVideoRequest();
+            //videoList转换
+            String videoIds = StringUtils.join(videoIdList.toArray(), ",");
+
+            //向request设置视频id
+            request.setVideoIds(videoIds);
+            //调用初始化对象的方法实现删除
+            client.getAcsResponse(request);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new GuliException(20001,"删除视频失败");
+        }
+
+    }
+
+    public static void main(String[] args) {
+        List<String> list=new ArrayList<>();
+        list.add("11");
+        list.add("22");
+        list.add("33");
+        String join = StringUtils.join(list.toArray(), ",");
+        System.out.println(join);
     }
 }
