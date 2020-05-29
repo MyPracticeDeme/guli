@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 
-@FeignClient(value = "service-vod")
+@FeignClient(name = "service-vod",fallback = VodFileDegradeFeignClient.class)
 @Component
 public interface VodClient {
 
