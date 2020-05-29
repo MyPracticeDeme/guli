@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient("service-vod")
+
+@FeignClient(value = "service-vod")
 @Component
 public interface VodClient {
 
@@ -21,5 +22,5 @@ public interface VodClient {
 
     //删除多个阿里云视频的方法
     @DeleteMapping("/eduvod/video/delete-batch")
-    public R deleteBatch(@RequestParam("videoIdList") List videoIdList);
+    public R deleteBatch(@RequestParam("videoIdList") List<String> videoIdList);
 }
