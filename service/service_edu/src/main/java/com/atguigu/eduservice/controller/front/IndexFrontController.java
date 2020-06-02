@@ -35,8 +35,8 @@ public class IndexFrontController {
 
         //查询前四条名师
         QueryWrapper<EduTeacher> wrapper1=new QueryWrapper<>();
-        wrapper.orderByDesc("id");
-        wrapper.last("limit 4");
+        wrapper1.orderByDesc("id");
+        wrapper1.last("limit 4");
         List<EduTeacher> teacherList = teacherService.list(wrapper1);
 
         return R.ok().data("edulist",eduList).data("teacherList",teacherList);
