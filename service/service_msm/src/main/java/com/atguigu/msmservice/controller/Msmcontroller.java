@@ -28,7 +28,7 @@ public class Msmcontroller {
     public R sendMsm(@PathVariable String phone){
         //1.从redis里面获取验证码，如果获取到直接返回
         String code = redisTemplate.opsForValue().get(phone);
-        if (StringUtils.isEmpty(code)){
+        if (!StringUtils.isEmpty(code)){
             return R.ok();
         }
 
